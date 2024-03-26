@@ -1,0 +1,24 @@
+{
+	"recursiveGetDataTemplate": {
+		"schema": {
+			"method": "GET",
+			"host": "<%= context.host %>",
+			"path": "<%= context.path %>",
+			"headers": {
+				"Authorization": "Basic <%= encode(context.api_key) %>",
+				"Content-Type": "application/json"
+			}
+		}
+	},
+	"getRequestApiTemplate": {
+		"schema": {
+			"method": "GET",
+			"host": "<%= iparam.domain %>",
+			"path": "<%= context.path %>",
+			"headers": {
+				"Authorization": "Basic <%= encode(iparam.api_key) %>",
+				"Content-Type": "application/json"
+			}
+		}
+	}
+}

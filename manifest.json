@@ -1,0 +1,38 @@
+{
+  "platform-version": "2.3",
+  "product": {
+    "freshservice": {
+      "location": {
+        "full_page_app": {
+          "url": "template.html",
+          "icon": "ooo.svg"
+        }
+      },
+      "events": {
+        "onTicketCreate": {
+          "handler": "onTicketUpdateCreateHandler"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketUpdateCreateHandler"
+        },
+        "onConversationCreate": {
+          "handler": "onConversationCreateCallback"
+        }
+      },
+      "requests": {
+        "recursiveGetDataTemplate": {},
+        "getRequestApiTemplate": {}
+      }
+    }
+  },
+  "dependencies": {
+    "axios": "0.18.0",
+    "base-64": "0.1.0",
+    "luxon":"1.9.0",
+    "extend": "3.0.2"
+  },
+  "engines": {
+    "node": "18.15.0",
+    "fdk": "9.0.2"
+  }
+}
