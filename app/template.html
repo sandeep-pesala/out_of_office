@@ -1,0 +1,218 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+  <!-- optional-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mailtoharshit/San-Francisco-Font-/sanfrancisco.css" /> -->
+  <!-- Include Editor style. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_style.min.css" rel="stylesheet" type="text/css" /> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+  <script src="https://cdn.freshdev.io/assets/app-client@2.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <!-- Include Editor JS files. -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/froala_editor.pkgd.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/plugins/lists.min.js"></script>
+  <!-- DateTimePicker -->
+  <script src="https://cdn.jsdelivr.net/npm/luxon@1.2.0/build/global/luxon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <script src="app.js"></script>
+  <script src="iparam.js"></script>
+  <link rel="stylesheet" type="text/css" href="./template.css">
+</head>
+
+<body>
+  <div class="fw-widget-wrapper">
+    <div class="row">
+      <div class="col-sm-6">
+        <span class="apply-out-of-office heading">Out of Office</span>
+        <span class="ooohelptext">
+          Out of Office app helps to manage the availability of an agent and ensures the tickets assigned to unavailable agents are properly handled
+        </span>
+      </div>
+    </div>
+    <div id="loading" class="spinner-wrapper hide">
+      <svg class="spinner" viewBox="0 0 50 50">
+        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+      </svg>
+    </div>
+    <div class="tab-container col-sm-10">
+      <ul class="menu">
+        <li><a href="javascript:void(0)" id="swithcadmin" class="active switchtoagent" data-view="admin">Agent Availability</a></li>
+        <li><a href="javascript:void(0)" class="switchtoagent" data-view="agent">Apply OOO</a></li>
+        <li><a href="javascript:void(0)" class="switchtoagent applyforagent" data-view="agentapply">Apply for an agent</a></li>
+        <li><a href="javascript:void(0)" class="switchtoagent" data-view="config">Settings</a></li>
+      </ul>
+    </div>
+    <div id="agentview" class="content view row hide aligncenter">
+      <div class="col-sm-7 panel1">
+        <div class="row">
+          <span class="apply-out-of-office">Apply Out Of Office(Me)</span>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="col-sm-7">
+              <span class="form-label">From</span>
+              <div class="form-group">
+                <div class="input-group date" id="datetimepicker1">
+                  <input type="text" class="form-control" placeholder="dd/mm/yyyy" onkeydown="return false" />
+                  <span class="input-group-addon">
+                    <i class="fas fa-calendar-alt"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="col-sm-7">
+              <span class="form-label">To</span>
+              <div class="form-group">
+                <div class="input-group date" id="datetimepicker2">
+                  <input type="text" class="form-control" placeholder="dd/mm/yyyy" onkeydown="return false" />
+                  <span class="input-group-addon">
+                    <i class="fas fa-calendar-alt"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 hide" id="froala-container"> 
+          </div>
+        </div>
+        <div class="row pad20 submitarea">
+          <button type="button" class="btn btn-primary agentapply">Apply</button>
+        </div>
+      </div>
+      <div class="col-sm-4 card panel2">
+        <div class="row">
+          <span class="ooo_history">OOO history</span>
+        </div>
+        <div class="row pad20 ooohistory"></div>
+      </div>
+    </div>
+    <div id="adminview" class="content view row hide">
+      <div class="col-sm-10">
+        <div class="row pnlooostatus">
+          <div class="row">
+            <div class="calendar-container">
+              <i class="far fa-calendar-alt dtpickerbtn"></i>
+              <input placeholder="dd/mm/yyyy" class="range" type="text" onkeydown="return false" id="dtpicker" />
+            </div>
+            <div class="dropdown" style="display: none;">
+              <i class="fas fa-chevron-down" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+              <ul class="dropdown-menu">
+                <li class="active"><a href="#" data-range="Today">Today</a></li>
+                <li><a href="#" data-range="Week">This Week</a></li>
+                <li><a href="#" data-range="Month">This Month</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row pad20">
+            <div id="tableloader" class="spinner-wrapper hide">
+              <svg class="spinner" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+              </svg>
+            </div>
+            <table class="ooolisttable" id="ooolisttable">
+              <tr>
+                <th>Agent Name</th>
+                <th>Email ID</th>
+                <th>Group</th>
+              </tr>
+            </table>
+            <div class="noleaveondate">
+              <p>Awesome! No one is on leave on the selected date.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="configview" class="content view row hide aligncenter">
+      <div class="col-sm-7 panel1 row pad20 stickypane">
+        <span>Set up the ticket assignments for workspace </span>
+        <button type="button" id="saveIparam" class="btn btn-primary pull-right marginleft10">Save</button>
+        <button type="button" data-view="admin" class="switchtoagent btn btn-default pull-right">Cancel</button>
+      </div>
+      <div class=" panel1 row pad20" id="container"></div>
+    </div>
+    <div id="agentapplyview" class="content view row hide">
+      <div class="col-sm-6">
+        <div class="row">
+          <span class="apply-out-of-office pl16">Apply Out Of Office</span>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <span class="form-label">Email</span>
+            <div class="input-group">
+              <span class="input-group-addon"><i id="searchicon" class="fas fa-search"></i></span>
+              <input id="email" type="text" class="form-control searchinput" name="email" placeholder="Email" onfocus="this.value=''" />
+              <input type="hidden" id="agentid" value="" />
+            </div>
+          </div>
+        </div>
+        <div class="row pad20">
+          <div class="col-sm-6">
+            <span class="form-label">From</span>
+            <div class="form-group">
+              <div class="input-group date" id="datetimepicker1afa">
+                <input type="text" class="form-control" placeholder="dd/mm/yyyy" onkeydown="return false" />
+                <span class="input-group-addon">
+                  <i class="fas fa-calendar-alt"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <span class="form-label">To</span>
+            <div class="form-group">
+              <div class="input-group date" id="datetimepicker2afa">
+                <input type="text" class="form-control" placeholder="dd/mm/yyyy" onkeydown="return false" />
+                <span class="input-group-addon">
+                  <i class="fas fa-calendar-alt"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="messagediv" class="row hide">
+          <div class="col-sm-6">
+            <span style="color:red"> Please fill all the above fields.</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="button" id="save" class="btn btn-primary">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+<script id="agentlisttemplate" type="text/template">
+  <tr>
+    <td>
+      <span title="{{Email}}" data-letters="{{firstletter}}">{{Name}}</span>
+    </td>
+    <td>{{Email}}</td>
+    <td>{{LeaveDate}}</td>
+    <td>
+      <button type="button" class="btn btn-default applyonbehalf" data-agentname="{{Name}}" data-agentid="{{Id}}">Apply On Behalf</button>
+    </td>
+  </tr>
+</script>
+
+</html>

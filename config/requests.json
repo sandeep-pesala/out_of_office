@@ -1,0 +1,50 @@
+{
+	"recursiveGetDataTemplate": {
+		"schema": {
+			"method": "GET",
+			"host": "<%= context.host %>",
+			"path": "<%= context.path %>",
+			"headers": {
+				"Authorization": "Basic <%= encode(context.api_key) %>",
+				"Content-Type": "application/json"
+			}
+		}
+	},
+	"getRequestApiTemplate": {
+		"schema": {
+			"method": "GET",
+			"host": "<%= iparam.domain %>",
+			"path": "<%= context.path %>",
+			"headers": {
+				"Authorization": "Basic <%= encode(iparam.api_key) %>",
+				"Content-Type": "application/json"
+			}
+		}
+	},
+	"getGroupSpecificToWorkspace": {
+		"schema": {
+			"method": "GET",
+			"host": "<%= iparam.domain %>",
+			"path": "<%= context.path %>",
+			"query":{
+        "workspace_id": "<%= context.workspace_id %>",
+				"per_page": "100"
+      },
+			"headers": {
+				"Authorization": "Basic <%= encode(iparam.api_key) %>",
+				"Content-Type": "application/json"
+			}
+		}
+	},
+	"getAgentSpecificToWorkspace": {
+		"schema": {
+			"method": "GET",
+			"host": "<%= iparam.domain %>",
+			"path": "<%= context.path %>",
+			"headers": {
+				"Authorization": "Basic <%= encode(iparam.api_key) %>",
+				"Content-Type": "application/json"
+			}
+		}
+	}
+}

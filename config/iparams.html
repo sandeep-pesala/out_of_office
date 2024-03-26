@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>OOO Settings</title>
+    <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshservice.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <!-- optional-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mailtoharshit/San-Francisco-Font-/sanfrancisco.css" />
+    <!-- Include Editor style. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.freshdev.io/assets/app-client@2.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <!-- Include Editor JS files. -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/plugins/lists.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/iparam.css">
+    <script src="./assets/iparams.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid" id="iparams-lvl1">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="fdkDomain" class="form-entry" title="Domain Name">Domain Name</label>
+              <input type="text" class="fdinput" name="fdkDomain" id="domain" pattern="^[a-zA-Z0-9\-]+\.freshservice\.com$" required="" /><br />
+              <span class="help-text">Ex: demo.freshservice.com</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="fdkAPI" class="form-entry" title="eg : ZUFLdoNwymPU6SOh0JjS">Api Key</label> 
+              <input type="text" class="fdinput" name="fdkAPI" id="api_key" required="" />
+              <span class="help-text">You can find it under profile settings</span>
+              <br/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="alert alert-danger" style="display:none;" id="domain-apikey">Please Enter a Valid "Domain Name" and "API-KEY"</div>
+              <div class="alert alert-danger" style="display:none;" id="domainerror">Please Enter Valid "Domain Name"</div>
+              <div class="alert alert-danger" style="display:none;" id="generalError"></div>
+            </div>
+          </div>
+          <div class="row pad20">
+            <div class="col-sm-6 text-right"><button name="verify" class="margin10 btn verify-button" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Verifying" onclick="verifyApiKey()">Verify</button></div>
+          </div>
+        </div>
+        <div class="col-md-12"></div>
+      </div>
+    </div>
+    <div class="container-fluid" id="iparams-lvl2">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-sm-6"><span class="when-agent-mark-as-o"> General Settings </span></div>
+          </div>
+        </div>
+      </div>
+      <div class="row pad20">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-12">
+                  <label class="form-entry hide" id="role-select-container"> Which roles can configure the OOO settings? </label>
+                  <label class="form-entry hide" id="mail-select-container"> Select agents who can configure OOO settings.</label>
+                  <select id="roles" multiple style="width: 100%"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row pad20">
+            <div class="col-sm-6">
+              <div class="alert alert-danger" style="display:none;" id="role-value-error">Please select atleast one role/agent</div>
+            </div>
+          </div>
+        </div>
+        <div class="inner hide">&nbsp;</div>
+      </div>
+    </div>
+  </body>
+</html>
